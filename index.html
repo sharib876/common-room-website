@@ -2,725 +2,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#053F5C">
-  <meta name="description" content="Common Room is a student companion designed to help you find your people, discover support, and stay on track throughout your educational journey.">
-  <title>Common Room | Find your people. Find your next step.</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --blue: #053F5C;
-      --green: #0F5132;
-      --gold: #C58B2B;
-      --cream: #FAF7F2;
-      --seafoam: #D7F2E3;
-      --coral: #F48C6C;
-      --slate: #3D4A5A;
-      --cloud: #F1F5F9;
-      --white: #FFFFFF;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      color: var(--slate);
-      background: var(--cream);
-      line-height: 1.7;
-    }
-
-    a { color: inherit; }
-
-    a:focus-visible, button:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 4px;
-    }
-
-    .container {
-      width: min(1120px, 90%);
-      margin: auto;
-    }
-
-    .eyebrow {
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--green);
-    }
-
-    h1, h2, h3 {
-      color: var(--blue);
-      line-height: 1.2;
-    }
-
-    h1, h2 {
-      font-family: "DM Serif Display", Georgia, serif;
-      font-weight: 400;
-    }
-
-    h1 {
-      font-size: clamp(3.2rem, 7vw, 5.8rem);
-      letter-spacing: -0.025em;
-      margin: 20px 0;
-    }
-
-    h2 {
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      margin: 12px 0 22px;
-    }
-
-    h3 { font-size: 1.25rem; }
-
-    p { margin: 0 0 20px; }
-
-    .muted { color: var(--slate); }
-
-    .highlight { color: var(--green); }
-
-    header {
-      background: var(--cream);
-      border-bottom: 1px solid #E7E7E2;
-      position: sticky;
-      top: 0;
-      z-index: 20;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      min-height: 84px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      color: var(--blue);
-      letter-spacing: -0.04em;
-      font-size: 1.3rem;
-    }
-
-    .brand-mark {
-      width: 43px;
-      height: 43px;
-      background: var(--blue);
-      border-radius: 14px 14px 5px 5px;
-      display: grid;
-      place-items: center;
-      color: var(--cream);
-      font-family: Georgia, serif;
-      font-size: 1.8rem;
-      font-weight: normal;
-      letter-spacing: 0;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 27px;
-    }
-
-    nav a {
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--blue);
-    }
-
-    nav a:hover { color: var(--green); }
-
-    .button {
-      display: inline-block;
-      padding: 14px 24px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.92rem;
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .button:hover { transform: translateY(-2px); }
-
-    .button-primary {
-      background: var(--blue);
-      color: white;
-    }
-
-    .button-primary:hover { background: var(--green); }
-
-    .button-light {
-      background: var(--cream);
-      color: var(--blue);
-    }
-
-    .hero {
-      padding: 110px 0 105px;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
-      gap: 65px;
-    }
-
-    .hero-copy {
-      font-size: 1.1rem;
-      max-width: 550px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 15px;
-      background: var(--seafoam);
-      border-radius: 999px;
-      color: var(--green);
-      font-size: 0.8rem;
-      font-weight: 700;
-    }
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-    }
-
-    .hero-art {
-      min-height: 460px;
-      position: relative;
-      background: var(--seafoam);
-      border-radius: 45% 45% 22px 22px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 30px;
-    }
-
-    .illustration {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 28px;
-      width: 100%;
-      max-width: 340px;
-      box-shadow: 0 18px 50px #053F5C16;
-      transform: rotate(-3deg);
-    }
-
-    .illustration-title {
-      font-family: "DM Serif Display", serif;
-      font-size: 1.75rem;
-      color: var(--blue);
-      line-height: 1.25;
-      margin: 10px 0 20px;
-    }
-
-    .mini-card {
-      padding: 13px 16px;
-      margin: 10px 0;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-
-    .mini-card:nth-of-type(1) { background: var(--seafoam); }
-    .mini-card:nth-of-type(2) { background: #FFF1D7; }
-    .mini-card:nth-of-type(3) { background: #FCE8E1; }
-
-    .floating-note {
-      position: absolute;
-      bottom: 30px;
-      right: -25px;
-      padding: 14px 20px;
-      background: var(--blue);
-      color: white;
-      border-radius: 14px;
-      box-shadow: 0 12px 30px #053F5C20;
-      font-size: 0.82rem;
-      font-weight: 700;
-    }
-
-    section { scroll-margin-top: 90px; }
-
-    .section {
-      padding: 95px 0;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin-bottom: 42px;
-    }
-
-    .problem {
-      background: var(--blue);
-      color: white;
-    }
-
-    .problem h2, .problem .eyebrow { color: white; }
-
-    .problem p { color: #E1EAF0; }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-      margin-top: 40px;
-    }
-
-    .problem-card {
-      padding: 27px;
-      background: #FFFFFF12;
-      border: 1px solid #FFFFFF28;
-      border-radius: 18px;
-    }
-
-    .problem-card h3 { color: white; }
-
-    .number {
-      font-family: "DM Serif Display", serif;
-      font-size: 2.3rem;
-      color: #F5C66D;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .pillar-card {
-      background: white;
-      padding: 35px 29px;
-      border-radius: 20px;
-      border: 1px solid #EAECE8;
-      box-shadow: 0 8px 30px #053F5C08;
-    }
-
-    .pillar-icon {
-      width: 57px;
-      height: 57px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      font-size: 1.65rem;
-      margin-bottom: 22px;
-    }
-
-    .icon-green { background: var(--seafoam); }
-    .icon-gold { background: #FFF1D7; }
-    .icon-coral { background: #FCE8E1; }
-
-    .feature-list {
-      padding-left: 19px;
-      font-size: 0.9rem;
-    }
-
-    .feature-list li { margin-bottom: 9px; }
-
-    .vision {
-      background: var(--seafoam);
-    }
-
-    .vision-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 80px;
-    }
-
-    .quote-card {
-      background: white;
-      border-radius: 25px;
-      padding: 42px;
-      box-shadow: 0 14px 40px #053F5C10;
-    }
-
-    .quote-mark {
-      font-family: Georgia, serif;
-      font-size: 5rem;
-      line-height: 0.8;
-      color: var(--gold);
-    }
-
-    .quote-text {
-      font-family: "DM Serif Display", serif;
-      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
-      line-height: 1.4;
-      color: var(--blue);
-    }
-
-    .audience-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .audience-card {
-      background: white;
-      border: 1px solid #EAECE8;
-      padding: 38px;
-      border-radius: 22px;
-    }
-
-    .audience-card strong { color: var(--green); }
-
-    .cta {
-      background: var(--green);
-      color: white;
-      text-align: center;
-    }
-
-    .cta h2 { color: white; }
-
-    .cta p {
-      color: #E5F4E9;
-      max-width: 640px;
-      margin: 0 auto 30px;
-    }
-
-    footer {
-      padding: 40px 0;
-      background: #032F45;
-      color: #E1EAF0;
-    }
-
-    .footer-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    footer a { color: white; }
-
-    footer p {
-      font-size: 0.82rem;
-      margin: 5px 0 0;
-    }
-
-    @media (max-width: 800px) {
-      .hero-grid, .vision-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-      }
-
-      .hero { padding: 65px 0; }
-
-      .hero-art { min-height: 370px; }
-
-      .floating-note { right: 5px; }
-
-      .problem-grid, .pillars {
-        grid-template-columns: 1fr;
-      }
-
-      .audience-grid { grid-template-columns: 1fr; }
-
-      .section { padding: 70px 0; }
-
-      .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 18px 0;
-      }
-
-      nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav a { font-size: 0.8rem; }
-    }
-
-    @media (max-width: 450px) {
-      .hero-art { padding: 18px; }
-
-      .illustration { padding: 20px; }
-
-      .floating-note {
-        font-size: 0.7rem;
-        bottom: 12px;
-      }
-
-      .quote-card, .audience-card { padding: 26px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .button { transition: none; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#053F5C">
+<meta name="description" content="Common Room helps students find their people, discover support, and stay on track. A student companion in development.">
+<title>Common Room | Find your people. Find your next step.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --blue:#053F5C;
+  --green:#0F5132;
+  --gold:#C58B2B;
+  --cream:#FAF7F2;
+  --seafoam:#D7F2E3;
+  --coral:#F48C6C;
+  --slate:#3D4A5A;
+  --cloud:#F1F5F9;
+  --white:#FFFFFF;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  font-family:Inter,Arial,sans-serif;
+  color:var(--slate);
+  background:var(--cream);
+  line-height:1.65;
+}
+a { color:inherit; }
+a:focus-visible,button:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:4px;
+}
+.container { width:min(1120px,90%); margin:auto; }
+section { scroll-margin-top:95px; }
+h1,h2,h3,p { margin-top:0; }
+h1,h2 { font-family:"DM Serif Display",Georgia,serif; font-weight:400; }
+h1,h2,h3 { color:var(--blue); line-height:1.18; }
+h1 { font-size:clamp(2.8rem,5.1vw,4.6rem); letter-spacing:-.025em; }
+h2 { font-size:clamp(2.1rem,3.6vw,3.25rem); }
+h3 { font-size:1.23rem; }
+p { margin-bottom:18px; }
+.eyebrow {
+  color:var(--green);
+  font-size:.75rem;
+  font-weight:800;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.button {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  text-decoration:none;
+  font-weight:700;
+  font-size:.91rem;
+  padding:13px 22px;
+  border-radius:999px;
+  transition:transform .2s,background .2s;
+}
+.button:hover { transform:translateY(-2px); }
+.primary { background:var(--blue); color:white; }
+.primary:hover { background:var(--green); }
+.secondary { border:1.5px solid var(--blue); color:var(--blue); }
+.light { background:var(--cream); color:var(--blue); }
+header {
+  position:sticky;
+  top:0;
+  z-index:30;
+  background:rgba(250,247,242,.97);
+  border-bottom:1px solid #E4E8E5;
+}
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  min-height:76px;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-decoration:none;
+  font-weight:800;
+  color:var(--blue);
+  font-size:1.25rem;
+  letter-spacing:-.045em;
+}
+.logo {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  background:var(--blue);
+  border-radius:13px;
+}
+.logo svg { width:30px; height:30px; }
+nav { display:flex; align-items:center; gap:25px; }
+nav a {
+  font-size:.86rem;
+  font-weight:600;
+  color:var(--blue);
+  text-decoration:none;
+}
+nav a:hover { color:var(--green); }
+.hero { padding:80px 0 88px; overflow:hidden; }
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:65px;
+  align-items:center;
+}
+.status {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:var(--seafoam);
+  color:var(--green);
+  padding:8px 14px;
+  border-radius:999px;
+  font-size:.76rem;
+  font-weight:700;
+}
+.status-dot {
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+}
+.hero h1 { margin:23px 0 19px; max-width:680px; }
+.hero h1 span { color:var(--green); }
+.hero-copy { max-width:570px; font-size:1.04rem; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
+.hero-note {
+  margin-top:23px;
+  font-size:.8rem;
+  color:#596773;
+}
+.preview-wrap {
+  position:relative;
+  padding:30px 8px 35px;
+}
+.preview-backdrop {
+  position:absolute;
+  inset:10px 0 0;
+  border-radius:46% 46% 26px 26px;
+  background:var(--seafoam);
+}
+.dashboard {
+  position:relative;
+  margin:auto;
+  width:min(100%,420px);
+  background:white;
+  border:1px solid #E7ECEB;
+  border-radius:23px;
+  box-shadow:0 22px 55px #053F5C1B;
+  padding:24px;
+  transform:rotate(-2deg);
+}
+.dashboard-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.dashboard-brand { color:var(--blue); font-size:.86rem; font-weight:800; }
+.dashboard-tag {
+  background:var(--seafoam);
+  color:var(--green);
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:.62rem;
+  font-weight:700;
+}
+.dashboard h3 {
+  font-family:"DM Serif Display",serif;
+  font-size:1.85rem;
+  font-weight:400;
+  margin:0 0 5px;
+}
+.dashboard-subtitle { font-size:.78rem; margin-bottom:18px; }
+.dash-item {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border-radius:13px;
+  padding:12px;
+  margin:10px 0;
+}
+.dash-item strong { display:block; font-size:.78rem; color:var(--blue); }
+.dash-item small { display:block; font-size:.69rem; color:var(--slate); }
+.dash-icon {
+  display:grid;
+  place-items:center;
+  flex-shrink:0;
+  width:35px;
+  height:35px;
+  border-radius:11px;
+  font-size:1rem;
+}
+.dash-green { background:#EDF8F1; }
+.dash-gold { background:#FFF5DF; }
+.dash-coral { background:#FFF0EB; }
+.dash-green .dash-icon { background:var(--seafoam); }
+.dash-gold .dash-icon { background:#F8E4B8; }
+.dash-coral .dash-icon { background:#FAD4C8; }
+.progress-label {
+  display:flex;
+  justify-content:space-between;
+  color:var(--blue);
+  font-size:.72rem;
+  font-weight:700;
+  margin-top:20px;
+}
+.progress-track {
+  background:var(--cloud);
+  height:9px;
+  border-radius:20px;
+  margin-top:9px;
+  overflow:hidden;
+}
+.progress-fill {
+  background:var(--gold);
+  height:100%;
+  width:60%;
+  border-radius:20px;
+}
+.preview-label {
+  position:relative;
+  text-align:center;
+  font-size:.7rem;
+  margin-top:20px;
+  color:var(--green);
+  font-weight:700;
+}
+.section { padding:90px 0; }
+.section-heading { max-width:740px; margin-bottom:38px; }
+.section-heading h2 { margin:12px 0 18px; }
+.problem { background:var(--blue); color:#E1EAF0; }
+.problem h2,.problem h3,.problem .eyebrow { color:white; }
+.problem-grid,.pillars {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+}
+.problem-card {
+  padding:28px;
+  border:1px solid #FFFFFF29;
+  background:#FFFFFF0C;
+  border-radius:18px;
+}
+.problem-card .number {
+  font-family:"DM Serif Display",serif;
+  color:#F1C574;
+  font-size:2.3rem;
+}
+.problem-card p { font-size:.91rem; margin-bottom:0; }
+.pillar {
+  padding:30px;
+  background:white;
+  border:1px solid #E8ECE9;
+  border-radius:20px;
+  box-shadow:0 9px 30px #053F5C08;
+}
+.pillar-icon {
+  display:grid;
+  place-items:center;
+  width:55px;
+  height:55px;
+  border-radius:16px;
+  font-size:1.6rem;
+  margin-bottom:23px;
+}
+.pillar:nth-child(1) .pillar-icon { background:var(--seafoam); }
+.pillar:nth-child(2) .pillar-icon { background:#FFF0D3; }
+.pillar:nth-child(3) .pillar-icon { background:#FCE5DD; }
+.pillar h3 { margin-bottom:9px; }
+.pillar .tagline { color:var(--green); font-weight:700; font-size:.9rem; }
+.pillar p { font-size:.9rem; }
+.feature-list { padding-left:19px; font-size:.85rem; }
+.feature-list li { margin-bottom:8px; }
+.journey {
+  background:var(--cloud);
+}
+.journey-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.journey-steps { display:grid; gap:14px; }
+.journey-step {
+  background:white;
+  padding:19px 22px;
+  border-radius:15px;
+  border-left:5px solid var(--green);
+}
+.journey-step:nth-child(2) { border-color:var(--gold); }
+.journey-step:nth-child(3) { border-color:var(--coral); }
+.journey-step strong { color:var(--blue); }
+.journey-step p { margin:5px 0 0; font-size:.87rem; }
+.mission { background:var(--seafoam); }
+.mission-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:65px;
+  align-items:center;
+}
+.quote {
+  background:white;
+  border-radius:24px;
+  padding:37px;
+  box-shadow:0 15px 40px #053F5C10;
+}
+.quote-mark {
+  font-family:Georgia,serif;
+  color:var(--gold);
+  font-size:5rem;
+  line-height:.8;
+}
+.quote p {
+  font-family:"DM Serif Display",serif;
+  font-size:clamp(1.5rem,2.4vw,2rem);
+  color:var(--blue);
+  line-height:1.4;
+}
+.quote small { color:var(--green); font-weight:700; }
+.founder-grid {
+  display:grid;
+  grid-template-columns:1fr 1.5fr;
+  gap:65px;
+  align-items:center;
+}
+.founder-visual {
+  background:var(--blue);
+  color:white;
+  min-height:300px;
+  border-radius:25px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:38px;
+}
+.founder-visual .eyebrow { color:#BCE8D0; }
+.founder-visual p {
+  font-family:"DM Serif Display",serif;
+  font-size:clamp(1.8rem,3vw,2.6rem);
+  line-height:1.35;
+  margin:15px 0 0;
+}
+.founder-copy p { font-size:.96rem; }
+.audience-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+.audience {
+  background:white;
+  border:1px solid #E7ECE8;
+  border-radius:20px;
+  padding:33px;
+}
+.audience strong { color:var(--green); }
+.cta {
+  text-align:center;
+  background:var(--green);
+  color:white;
+}
+.cta h2 { color:white; }
+.cta .eyebrow { color:#F6CE82; }
+.cta p { max-width:650px; margin:0 auto 25px; }
+.cta .small-note {
+  font-size:.78rem;
+  margin-top:23px;
+  color:#E0F2E5;
+}
+footer {
+  background:#032F45;
+  color:#E0EAF0;
+  padding:38px 0;
+}
+.footer-grid {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+footer strong { color:white; }
+footer p { font-size:.8rem; margin:5px 0; }
+@media(max-width:850px) {
+  .hero-grid,.journey-grid,.mission-grid,.founder-grid {
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .hero { padding:65px 0; }
+  .preview-wrap { max-width:490px; margin:auto; width:100%; }
+  .problem-grid,.pillars { grid-template-columns:1fr; }
+  .section { padding:70px 0; }
+  .nav { flex-wrap:wrap; justify-content:center; padding:15px 0; }
+  nav { justify-content:center; flex-wrap:wrap; gap:14px; }
+  nav a { font-size:.78rem; }
+  section { scroll-margin-top:140px; }
+}
+@media(max-width:550px) {
+  .hero h1 { font-size:clamp(2.65rem,10vw,3.4rem); }
+  .hero-actions .button { width:100%; }
+  .audience-grid { grid-template-columns:1fr; }
+  .dashboard { padding:18px; }
+  .quote,.founder-visual,.audience { padding:25px; }
+  .container { width:90%; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .button { transition:none; }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="Common Room home">
-        <span class="brand-mark" aria-hidden="true">⌂</span>
-        <span>common room.</span>
-      </a>
-      <nav aria-label="Main navigation">
-        <a href="#about">Our Why</a>
-        <a href="#experience">The Experience</a>
-        <a href="#mission">Our Mission</a>
-        <a href="#connect">Connect</a>
-      </nav>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Common Room home">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none">
+          <path d="M8 40V23C8 14.2 15.2 7 24 7S40 14.2 40 23V40"
+                stroke="#FAF7F2" stroke-width="4" stroke-linecap="round"/>
+          <path d="M17 40V24C17 20.1 20.1 17 24 17S31 20.1 31 24V40"
+                stroke="#C58B2B" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span>common room.</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#why">Our Why</a>
+      <a href="#experience">The Experience</a>
+      <a href="#mission">Our Mission</a>
+      <a href="#founder">Our Story</a>
+      <a href="#connect">Connect</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="status">
+        <span class="status-dot"></span>
+        A student companion in the making
+      </div>
+      <h1>Find your people.<br><span>Find your next step.</span></h1>
+      <p class="hero-copy">
+        There's more to student life than getting to graduation.
+        It's about the people you meet, the support you discover,
+        and the person you become along the way.
+      </p>
+      <p class="hero-copy">
+        Meet Common Room, a digital companion designed to help
+        students feel connected, supported, and ready for what's next.
+      </p>
+      <div class="hero-actions">
+        <a href="#experience" class="button primary">Explore Common Room →</a>
+        <a href="#mission" class="button secondary">Why We're Building It</a>
+      </div>
+      <p class="hero-note">Thoughtfully designed for student life. Currently in development.</p>
     </div>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="container hero-grid">
-        <div>
-          <div class="status">
-            <span class="status-dot"></span>
-            An early-stage student success venture
-          </div>
-          <h1>Find your people.<br><span class="highlight">Find your next step.</span></h1>
-          <p class="hero-copy">
-            Student life is a journey. You shouldn't have to navigate it alone.
-            Common Room is a digital companion designed to help students
-            build meaningful connections, discover the support they need,
-            and stay on track.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#experience">Explore the Vision</a>
-            <a class="button" href="#mission">Our Mission →</a>
+    <div class="preview-wrap">
+      <div class="preview-backdrop"></div>
+      <div class="dashboard">
+        <div class="dashboard-top">
+          <span class="dashboard-brand">common room.</span>
+          <span class="dashboard-tag">YOUR SPACE</span>
+        </div>
+        <h3>Hey, you belong here.</h3>
+        <p class="dashboard-subtitle">A little connection. A little support. One step at a time.</p>
+
+        <div class="dash-item dash-green">
+          <span class="dash-icon">♡</span>
+          <div>
+            <strong>Find your people</strong>
+            <small>Discover new connections and community</small>
           </div>
         </div>
 
-        <div class="hero-art" aria-label="Illustration of the planned Common Room student experience">
-          <div class="illustration">
-            <span class="eyebrow">Your student journey</span>
-            <div class="illustration-title">There's room for you here.</div>
-            <div class="mini-card">♡ Find your community</div>
-            <div class="mini-card">✦ Discover helpful resources</div>
-            <div class="mini-card">✓ Make progress, your way</div>
-          </div>
-          <div class="floating-note">A little support goes a long way ✨</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section problem" id="about">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">The challenge</span>
-          <h2>Higher education opens doors. Navigating it isn't always easy.</h2>
-          <p>
-            Between academic expectations, personal responsibilities,
-            finding community, and accessing support, students can face
-            a complicated journey. We believe there is an opportunity
-            to make that journey more connected and manageable.
-          </p>
-        </div>
-
-        <div class="problem-grid">
-          <div class="problem-card">
-            <div class="number">01</div>
-            <h3>Finding belonging</h3>
-            <p>Meeting people and building meaningful relationships can be difficult, especially in unfamiliar environments.</p>
-          </div>
-          <div class="problem-card">
-            <div class="number">02</div>
-            <h3>Finding support</h3>
-            <p>Helpful services and opportunities may exist, but students don't always know where to look or what is relevant to them.</p>
-          </div>
-          <div class="problem-card">
-            <div class="number">03</div>
-            <h3>Finding momentum</h3>
-            <p>Balancing academic goals with everyday life requires planning, encouragement, and practical tools.</p>
+        <div class="dash-item dash-gold">
+          <span class="dash-icon">✦</span>
+          <div>
+            <strong>Made for you</strong>
+            <small>Explore resources for your journey</small>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section" id="experience">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">The Common Room experience</span>
-          <h2>One companion. Three ways to thrive.</h2>
-          <p>
-            We're developing a student-centred experience around
-            three interconnected pillars.
-          </p>
+        <div class="dash-item dash-coral">
+          <span class="dash-icon">✓</span>
+          <div>
+            <strong>My Week</strong>
+            <small>Small steps still count</small>
+          </div>
         </div>
 
-        <div class="pillars">
-          <article class="pillar-card">
-            <div class="pillar-icon icon-green" aria-hidden="true">♡</div>
-            <h3>Belonging</h3>
-            <p><strong>Find your people.</strong></p>
-            <p>
-              Discover opportunities for meaningful connections,
-              shared interests, and friendships with people you
-              might not otherwise meet.
-            </p>
-            <ul class="feature-list">
-              <li>Student connection and community discovery</li>
-              <li>Intentional, student-centred interactions</li>
-              <li>A greater sense of belonging</li>
-            </ul>
-          </article>
-
-          <article class="pillar-card">
-            <div class="pillar-icon icon-gold" aria-hidden="true">✦</div>
-            <h3>Support</h3>
-            <p><strong>Find your resources.</strong></p>
-            <p>
-              Make it easier to discover relevant campus services,
-              opportunities, and tools for your academic
-              and personal journey.
-            </p>
-            <ul class="feature-list">
-              <li>Personalized resource discovery</li>
-              <li>Relevant institutional support</li>
-              <li>Guidance when you need a next step</li>
-            </ul>
-          </article>
-
-          <article class="pillar-card">
-            <div class="pillar-icon icon-coral" aria-hidden="true">✓</div>
-            <h3>Progress</h3>
-            <p><strong>Find your next step.</strong></p>
-            <p>
-              Build helpful routines, manage responsibilities,
-              and recognize the progress you're making
-              throughout student life.
-            </p>
-            <ul class="feature-list">
-              <li>Goals, routines, and weekly planning</li>
-              <li>Encouraging progress tracking</li>
-              <li>Reflection throughout the term</li>
-            </ul>
-          </article>
+        <div class="progress-label">
+          <span>Your weekly momentum</span>
+          <span>Keep going!</span>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <div class="progress-fill"></div>
         </div>
       </div>
-    </section>
+      <p class="preview-label">Illustrative concept · Not a live student account</p>
+    </div>
+  </div>
+</section>
 
-    <section class="section vision" id="mission">
-      <div class="container vision-grid">
-        <div>
-          <span class="eyebrow">Our social mission</span>
-          <h2>No student should have to navigate their journey alone.</h2>
-          <p>
-            Common Room is an early-stage, social-impact EdTech venture
-            with a simple ambition: to help students feel connected,
-            supported, and equipped to thrive.
-          </p>
-          <p>
-            We're exploring an institution-funded model designed
-            to make the core student experience available
-            without individual subscription fees.
-          </p>
-          <p>
-            We believe success should be measured not only by
-            how many students we reach, but by the meaningful
-            difference we make in their lives.
-          </p>
-        </div>
+<section class="section problem" id="why">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Why Common Room?</span>
+      <h2>Student life is full of possibility. It can also feel overwhelming.</h2>
+      <p>
+        Students are navigating more than coursework. They're building
+        relationships, managing responsibilities, making decisions,
+        and finding their place in a new environment.
+      </p>
+      <p>
+        We believe the right connections, support, and everyday tools
+        can make that journey easier to navigate.
+      </p>
+    </div>
+    <div class="problem-grid">
+      <article class="problem-card">
+        <div class="number">01</div>
+        <h3>Finding your people</h3>
+        <p>Making meaningful connections isn't always easy, especially with people outside your existing circles.</p>
+      </article>
+      <article class="problem-card">
+        <div class="number">02</div>
+        <h3>Finding the right support</h3>
+        <p>Students may not know which resources exist, where to find them, or when to reach out.</p>
+      </article>
+      <article class="problem-card">
+        <div class="number">03</div>
+        <h3>Finding your rhythm</h3>
+        <p>Balancing academics, relationships, responsibilities, and personal goals takes more than a calendar.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-        <div class="quote-card">
-          <div class="quote-mark" aria-hidden="true">“</div>
-          <p class="quote-text">
-            Common Room helped me find my people,
-            discover resources I didn't know existed,
-            and stay on track throughout my student journey.
-          </p>
-          <span class="eyebrow">The student outcome we're working toward</span>
-        </div>
+<section class="section" id="experience">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">The Common Room experience</span>
+      <h2>Your journey. Your people. Your next step.</h2>
+      <p>
+        We're building around three connected parts of student life.
+        Because thriving isn't just about academic performance.
+      </p>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">♡</div>
+        <h3>Belonging</h3>
+        <p class="tagline">Find your people.</p>
+        <p>Meet students you might never have crossed paths with and discover opportunities to build genuine connections.</p>
+        <ul class="feature-list">
+          <li>Discover new connections</li>
+          <li>Build meaningful relationships</li>
+          <li>Feel part of your student community</li>
+        </ul>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">✦</div>
+        <h3>Support</h3>
+        <p class="tagline">Find what you need.</p>
+        <p>Discover relevant resources, services, and opportunities without having to figure everything out alone.</p>
+        <ul class="feature-list">
+          <li>Personalized resource discovery</li>
+          <li>Academic and everyday-life support</li>
+          <li>Helpful information at the right time</li>
+        </ul>
+      </article>
+
+      <article class="pillar">
+        <div class="pillar-icon" aria-hidden="true">✓</div>
+        <h3>Progress</h3>
+        <p class="tagline">Find your next step.</p>
+        <p>Make space for your goals, routines, and responsibilities, with encouragement that recognizes progress at your pace.</p>
+        <ul class="feature-list">
+          <li>Goals and weekly planning</li>
+          <li>Supportive routines and reflection</li>
+          <li>Celebrate the little wins</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section journey">
+  <div class="container journey-grid">
+    <div>
+      <span class="eyebrow">Made for the journey</span>
+      <h2>From your first day to your next big milestone.</h2>
+      <p>
+        Every student's journey looks different. Common Room is being
+        designed to meet students where they are, through the
+        changing moments of each academic term.
+      </p>
+      <p>
+        Whether you're finding your footing, navigating a busy semester,
+        or looking back on how far you've come, there's room for you here.
+      </p>
+    </div>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <strong>Starting Point</strong>
+        <p>Set your intentions, discover support, and find your footing.</p>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">Who we're building for</span>
-          <h2>Designed for students. Built with institutions in mind.</h2>
-        </div>
-
-        <div class="audience-grid">
-          <article class="audience-card">
-            <span class="eyebrow">For students</span>
-            <h3>A companion for the journey</h3>
-            <p>
-              A place to discover connections, access support,
-              plan your week, and celebrate your progress.
-            </p>
-            <strong>More connection. Less guesswork.</strong>
-          </article>
-
-          <article class="audience-card">
-            <span class="eyebrow">For institutions</span>
-            <h3>A new way to support student success</h3>
-            <p>
-              A potential partner in making student support
-              more discoverable, encouraging engagement,
-              and understanding the student experience.
-            </p>
-            <strong>Student-centred by design.</strong>
-          </article>
-        </div>
+      <div class="journey-step">
+        <strong>Halfway There</strong>
+        <p>Check in with yourself, adjust your plans, and keep moving.</p>
       </div>
-    </section>
-
-    <section class="section cta" id="connect">
-      <div class="container">
-        <span class="eyebrow" style="color:#F5C66D">Let's connect</span>
-        <h2>There's room for something better.</h2>
-        <p>
-          Common Room is currently in early development.
-          We're interested in conversations with students,
-          higher education professionals, and potential partners
-          who care about belonging and student success.
-        </p>
-        <p>
-          Interested in connecting? Reach out through our
-          forthcoming contact channel.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <div>
-        <strong>common room.</strong>
-        <p>Find your people. Find your next step.</p>
-      </div>
-      <div>
-        <p>Made with purpose in British Columbia, Canada.</p>
-        <p>© <span id="year"></span> Common Room. Pre-launch venture.</p>
+      <div class="journey-step">
+        <strong>Looking Back</strong>
+        <p>Reflect on your experiences, recognize your growth, and celebrate progress.</p>
       </div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
+<section class="section mission" id="mission">
+  <div class="container mission-grid">
+    <div>
+      <span class="eyebrow">Our social mission</span>
+      <h2>No student should have to navigate their journey alone.</h2>
+      <p>
+        Common Room is an early-stage, social-impact EdTech venture
+        focused on helping students build meaningful connections,
+        discover support, and make progress.
+      </p>
+      <p>
+        We're exploring an institution-funded model so students
+        can access the core experience without individual
+        subscription fees.
+      </p>
+      <p>
+        Our ambition isn't simply to reach students.
+        It's to make a meaningful difference in their lives.
+      </p>
+    </div>
+    <div class="quote">
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <p>
+        Common Room helped me find my people, discover resources
+        I didn't know existed, and stay on track throughout
+        my student journey.
+      </p>
+      <small>THE STUDENT OUTCOME WE ASPIRE TO CREATE</small>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="founder">
+  <div class="container founder-grid">
+    <div class="founder-visual">
+      <span class="eyebrow">A note from the founder</span>
+      <p>Student success should be about more than making it through.</p>
+      <p>It should be about having the opportunity to thrive.</p>
+    </div>
+    <div class="founder-copy">
+      <span class="eyebrow">Our story</span>
+      <h2>Built from a belief in belonging.</h2>
+      <p>
+        Common Room was born from a simple question:
+        What if students had a companion that made it easier
+        to find their people, access meaningful support,
+        and navigate everyday student life?
+      </p>
+      <p>
+        Founded by Shari-Ann Baker, an education and program
+        management professional with more than a decade of
+        experience, Common Room brings together a passion
+        for student success, connection, and access to opportunity.
+      </p>
+      <p>
+        The goal is to create something students genuinely
+        want to use, and something that helps them feel
+        seen, supported, and capable of moving forward.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Who we're building for</span>
+      <h2>Student-centred. Institution-supported.</h2>
+    </div>
+    <div class="audience-grid">
+      <article class="audience">
+        <span class="eyebrow">For students</span>
+        <h3>A space to find your way.</h3>
+        <p>
+          Discover connections, find useful resources, plan
+          your week, and recognize how far you've come.
+        </p>
+        <strong>More belonging. More support. More possibility.</strong>
+      </article>
+      <article class="audience">
+        <span class="eyebrow">For institutions</span>
+        <h3>A new approach to student engagement.</h3>
+        <p>
+          We're exploring how Common Room could help
+          institutions make support more accessible,
+          encourage connection, and better understand
+          student needs through responsible, privacy-conscious design.
+        </p>
+        <strong>Better student experiences, by design.</strong>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section cta" id="connect">
+  <div class="container">
+    <span class="eyebrow">What's next?</span>
+    <h2>There's room for you here.</h2>
+    <p>
+      Common Room is in early development. We're looking forward
+      to learning from students, educators, and institutional
+      partners as we shape what comes next.
+    </p>
+    <a href="#experience" class="button light">Explore Our Vision →</a>
+    <p class="small-note">
+      Interested in collaborating? A dedicated contact channel is coming soon.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <strong>common room.</strong>
+      <p>Find your people. Find your next step.</p>
+    </div>
+    <div>
+      <p>Made with purpose in British Columbia, Canada.</p>
+      <p>© <span id="year"></span> Common Room · Pre-launch venture</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
 </body>
 </html>
